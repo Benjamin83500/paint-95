@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+	<title>Ben's PAINT 95</title>
+	<link rel="shortcut icon" type="image/x-icon" href="https://static-s.aa-cdn.net/img/amazon/30600000115474/2462c1b061759b439555ae62cd7ac7b7">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+	<link rel="stylesheet" href="css/animate.css">
+	</head> 
+	<body>
+		<h1 class="lightSpeedIn animated" style="font-family:'Source Code Pro', monospace; text-align: center; color:white;">-- Welcome to Ben's Paint 95 -- <i class="fa fa-paint-brush" aria-hidden="true"></i> </h1>
+	<script>
+		// create the canvas 
+		var canvas = document.createElement('canvas');
+
+		canvas.id = "canvas";
+		canvas.width = 500;
+		canvas.height = 500;
+		canvas.style.position = "relative";
+		canvas.style.border = "1px solid black";
+		canvas.style.cursor= "crosshair";
+		canvas.style.borderRadius="30px";
+		canvas.style.marginLeft="300px";
+		canvas.style.backgroundColor="white";
+	
+		var body = document.getElementsByTagName("body")[0];
+		body.appendChild(canvas);
+		body.style.backgroundImage="url('https://s-media-cache-ak0.pinimg.com/736x/38/95/41/389541c88b3ad1354f1278ccdf23cb86--laptop-wallpaper-mac-wallpaper.jpg')";
+		body.style.backgroundRepeat="no-repeat";
+		body.style.backgroundSize="cover";
+
+		canvas = document.getElementById("canvas");
+
+		console.log(canvas);
+		var rect=canvas.getContext("2d");
+		canvas.addEventListener ('mousemove', function(click){
+			if (click.buttons != 1) return;
+			var x = event.clientX;
+		    var y = event.clientY;
+			rect.fillRect(x-310,y-87,inputSizes.value,inputSizes.value);
+			rect.fillStyle = inputColor.value;
+		})
+		//different colors 
+		var inputColor = document.createElement('input');
+
+		inputColor.setAttribute('type', 'color');
+		var inputDiv = document.createElement('div');
+		inputDiv.innerHTML ="<img src='http://www.icone-png.com/png/14/14234.png' width='50' height='50'/>"
+		inputDiv.style.fontFamily="helvetica";
+		inputDiv.style.fontSize="50";
+		inputDiv.style.position="absolute";
+		inputDiv.style.top="100px";
+		inputDiv.style.left="850px";
+		inputColor.style.position="absolute";
+		inputColor.style.top="160px";
+		inputColor.style.left="850px";
+		inputColor.style.cursor="pointer";
+		body.appendChild(inputDiv);
+		body.appendChild(inputColor);
+		
+
+		//clear 
+		var buttonClear = document.createElement('button');
+		var clearDiv = document.createElement('div');
+		clearDiv.innerHTML = "Clear the screen :";
+		clearDiv.style.fontFamily="helvetica";
+		clearDiv.style.color="white";
+		clearDiv.style.fontSize="50";
+		clearDiv.style.position="absolute";
+		clearDiv.style.top="220px";
+		clearDiv.style.left="850px";
+		buttonClear.style.position="absolute";
+		buttonClear.style.top="250px";
+		buttonClear.style.left="850px";
+		buttonClear.innerHTML = "CLEAR";
+		buttonClear.style.cursor="pointer";
+		body.appendChild(clearDiv);
+		body.appendChild(buttonClear);
+		
+
+		buttonClear.addEventListener('click', function (){
+		rect.clearRect(0, 0, canvas.width, canvas.height);
+		})
+
+		//different sizes
+		var inputSizes = document.createElement('input');
+		var sizeDiv = document.createElement('div');
+		sizeDiv.innerHTML = "Pick a size :";
+		sizeDiv.style.fontFamily="helvetica";
+		sizeDiv.style.fontSize="50";
+		sizeDiv.style.color="white";
+		sizeDiv.style.position="absolute";
+		sizeDiv.style.top="300px";
+		sizeDiv.style.left="850px";
+		inputSizes.style.position="absolute";
+		inputSizes.style.top="330px";
+		inputSizes.style.left="850px";
+		inputSizes.style.cursor="pointer";
+		inputSizes.setAttribute('type', 'range');
+		inputSizes.setAttribute('min', 5);
+		inputSizes.setAttribute('max', 50);
+		inputSizes.setAttribute('step', 5);
+		inputSizes.setAttribute('value', 5);
+		body.appendChild(sizeDiv);
+		body.appendChild(inputSizes);
+
+		//erase
+		var buttonEras = document.createElement('button');
+		var clearDiv = document.createElement('div');
+		clearDiv.innerHTML = "Erase the screen :";
+		clearDiv.style.fontFamily="helvetica";
+		clearDiv.style.fontSize="50";
+		clearDiv.style.color="white";
+		clearDiv.style.position="absolute";
+		clearDiv.style.top="380px";
+		clearDiv.style.left="850px";
+		buttonEras.style.position="absolute";
+		buttonEras.style.top="410px";
+		buttonEras.style.left="850px";
+		buttonEras.style.cursor="pointer";
+		buttonEras.innerHTML ="<img src='http://papetburo.fr/images/ecole/gomme.png' width='25' height='25'/>"
+		body.appendChild(clearDiv);
+		body.appendChild(buttonEras);
+
+		buttonEras.addEventListener('click', function (){
+			inputColor.value = "#ffffff";
+		})
+	</script>	
+	</body>			
+</html>
